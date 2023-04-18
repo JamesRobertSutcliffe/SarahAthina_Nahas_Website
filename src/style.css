@@ -1,0 +1,56 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(49, 49, 49);
+    color: rgb(195, 227, 248);
+}
+
+/* .form-row {
+    display: flex;
+    justify-content: center;
+} */
+
+label {
+    padding: 2px;
+    margin: 2px;
+}
+
+input {
+    padding: 2px;
+    margin: 2px;
+}
+
+.form-label {
+    display: block;
+    padding: 2px;
+    margin: 2px;
+}
+
+.form-input {
+    width: 15vw;
+    padding: 2px;
+    margin: 2px;
+}
+
+.btn {
+    display: block;
+    width: 15vw;
+    padding: 2px;
+    margin: 2px;
+}
+
+li {
+    padding: 2px;
+    margin: 2px;
+    list-style-type: none;
+}
+
+.btn-delete {
+    background-color: transparent;
+    border-radius: 10%;
+    border-color: red;
+    color: red;
+}
