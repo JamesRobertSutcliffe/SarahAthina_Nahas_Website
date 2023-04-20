@@ -27,7 +27,13 @@ function App() {
           </label>
           <button className="btn-delete">Delete</button>
         </li>
-
+        <li>
+          <label>
+            <input type="checkbox" />
+            Item threebebe
+          </label>
+          <button className="btn-delete">Delete</button>
+        </li>
       </ul>
     </>
   )
