@@ -40,3 +40,6 @@ function App() {
 }
 
 export default App
+
+// create key event listener that changes the state of variable
+// save this variable to to component with parsed state holding list entry
