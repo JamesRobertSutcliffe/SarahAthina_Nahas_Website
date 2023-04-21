@@ -4,14 +4,22 @@ import { useState } from "react"
 function App() {
 
   const [newItem, setNewItem] = useState("");
+  const [toDos, setToDos] = useState([]);
+
+  // 1 - handle submit function should add value of input to to do array
+  // 2 - map through to do's array parsing into a list component for each to do entry
 
   function typeInput(e) {
     setNewItem(e.target.value)
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-row">
           <label className="form-label" htmlFor="item"> New Item </label>
           <input value={newItem} onChange={typeInput} className="form-input" type="text" id="item" />
