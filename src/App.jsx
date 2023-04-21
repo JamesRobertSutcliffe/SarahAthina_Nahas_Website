@@ -5,12 +5,16 @@ function App() {
 
   const [newItem, setNewItem] = useState("");
 
+  function typeInput(e) {
+    setNewItem(e.target.value)
+  }
+
   return (
     <>
       <form>
         <div className="form-row">
           <label className="form-label" htmlFor="item"> New Item </label>
-          <input className="form-input" type="text" id="item" />
+          <input value={newItem} onChange={typeInput} className="form-input" type="text" id="item" />
           <button className="btn">Add</button>
         </div>
       </form>
