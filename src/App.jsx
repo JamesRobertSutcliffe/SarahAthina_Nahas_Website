@@ -7,7 +7,7 @@ function App() {
   const [toDos, setToDos] = useState([]);
 
   // 1 - handle submit function should add value of input to to do array
-  // 2 - map through to do's array parsing into a list component for each to do entry
+  // 2 - map (loop through) through to do's array parsing into a list component for each to do entry
 
   function typeInput(e) {
     setNewItem(e.target.value)
