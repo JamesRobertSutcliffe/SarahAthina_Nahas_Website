@@ -9,6 +9,7 @@ function App() {
   // 1 - type input function sets newItem state on change of typed keys
   // 2 - handle submit function returns array of todos and adds new item to array
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
+  // 4 - make data persistent
 
   // typeInput functions sets netItem state using onchange event listener
 
@@ -23,6 +24,8 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     setToDos(currentTodos => {
+
+      // Research why react objects needs ID//
       return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }]
     })
   }
