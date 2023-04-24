@@ -15,6 +15,9 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setToDos(currentTodos => {
+      return [...currentTodos, { newItem }]
+    })
   }
 
   console.log(toDos)
@@ -25,7 +28,7 @@ function App() {
         <div className="form-row">
           <label className="form-label" htmlFor="item"> New Item </label>
           <input value={newItem} onChange={typeInput} className="form-input" type="text" id="item" />
-          <button className="btn" onClick={() => setToDos(newItem)}>Add</button>
+          <button className="btn">Add</button>
         </div>
       </form>
       <h1 className="header">To Do List</h1>
