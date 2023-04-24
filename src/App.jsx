@@ -6,17 +6,24 @@ function App() {
   const [newItem, setNewItem] = useState("");
   const [toDos, setToDos] = useState([]);
 
-  // 1 - handle submit function should add value of input to to do array
-  // 2 - map (loop through) through to do's array parsing into a list component for each to do entry
+  // 1 - type input function sets newItem state on change of typed keys
+  // 2 - handle submit function returns array of todos and adds new item to array
+  // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
+
+  // typeInput functions sets netItem state using onchange event listener
 
   function typeInput(e) {
     setNewItem(e.target.value)
   }
 
+
+  // handle submit function sets to do's using a nested function that has the parses current todos then returns these using spread operator and adds a new entry as an object / 
+  // this object contains an ID, title(actual input info) and completed Boolean
+
   function handleSubmit(e) {
     e.preventDefault();
     setToDos(currentTodos => {
-      return [...currentTodos, { newItem }]
+      return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }]
     })
   }
 
@@ -33,27 +40,18 @@ function App() {
       </form>
       <h1 className="header">To Do List</h1>
       <ul>
-        <li>
-          <label>
-            <input type="checkbox" />
-            Item uno
-          </label>
-          <button className="btn-delete">Delete</button>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" />
-            Item twono
-          </label>
-          <button className="btn-delete">Delete</button>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" />
-            Item threebebe
-          </label>
-          <button className="btn-delete">Delete</button>
-        </li>
+
+        {/* Map through todos array and returns a list entry with the new todo entries name (todo.name) from the added object */}
+
+        {toDos.map((item) => {
+          return <li>
+            <label>
+              <input type="checkbox" />
+              {item.title}
+            </label>
+            <button className="btn-delete">Delete</button>
+          </li>
+        })}
       </ul>
     </>
   )
