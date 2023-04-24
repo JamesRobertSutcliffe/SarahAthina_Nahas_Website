@@ -17,13 +17,15 @@ function App() {
     e.preventDefault();
   }
 
+  console.log(toDos)
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-row">
           <label className="form-label" htmlFor="item"> New Item </label>
           <input value={newItem} onChange={typeInput} className="form-input" type="text" id="item" />
-          <button className="btn">Add</button>
+          <button className="btn" onClick={() => setToDos(newItem)}>Add</button>
         </div>
       </form>
       <h1 className="header">To Do List</h1>
