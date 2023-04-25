@@ -28,9 +28,22 @@ function App() {
       // Research why react objects needs ID//
       return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }]
     })
+
+    setNewItem("");
+
   }
 
-  console.log(toDos)
+  function toggleTodo(id, completed) {
+    setToDos(currentTodos => {
+      return currentTodos.map((i) => {
+        if (i.id === id) {
+          return { ...i, completed }
+        }
+        return i;
+      })
+    })
+    console.log(completed)
+  }
 
   return (
     <>
@@ -47,9 +60,9 @@ function App() {
         {/* Map through todos array and returns a list entry with the new todo entries name (todo.name) from the added object */}
 
         {toDos.map((item) => {
-          return <li>
+          return <li key={item.id}>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" checked={item.completed} onClick={e => toggleTodo(item.id, e.target.checked)} />
               {item.title}
             </label>
             <button className="btn-delete">Delete</button>
