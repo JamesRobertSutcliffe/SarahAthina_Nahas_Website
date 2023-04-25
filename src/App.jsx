@@ -41,6 +41,7 @@ function App() {
     setToDos(currentTodos => {
       return currentTodos.map((todo) => {
         if (todo.id === id) {
+          // returning an entired new todo object and just changing the completed keys value
           return { ...todo, completed }
         }
         return todo;
@@ -69,8 +70,10 @@ function App() {
         </div>
       </form>
       <h1 className="header">To Do List</h1>
-      <ul>
 
+      <ul>
+        {/* Short ciruiting checks renders text if condition array is equal to 0 is met, if not text is not renderd */}
+        {toDos.length === 0 && "Nothing To Do..."}
         {/* Map through todos array and returns a list entry with the new todo entries name (todo.name) from the added object */}
 
         {toDos.map((item) => {
