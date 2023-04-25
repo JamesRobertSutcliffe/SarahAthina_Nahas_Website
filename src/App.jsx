@@ -33,17 +33,31 @@ function App() {
 
   }
 
+
+  // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
+  // is assigned value of checkbox (true or false) --- the checked of the checkbox is then updated in real time as state changes
+
   function toggleTodo(id, completed) {
     setToDos(currentTodos => {
-      return currentTodos.map((i) => {
-        if (i.id === id) {
-          return { ...i, completed }
+      return currentTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed }
         }
-        return i;
+        return todo;
       })
     })
-    console.log(completed)
   }
+
+
+  // delete todo function maps through the current todos and filters out the results not equal to selected ID and then keep them within the todo array and rednered to page
+  function deleteTodo(id) {
+    setToDos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
+    })
+  }
+
+
+  console.log(toDos)
 
   return (
     <>
@@ -62,10 +76,12 @@ function App() {
         {toDos.map((item) => {
           return <li key={item.id}>
             <label>
+              {/* input triggers toggle todo function onclick -- parsing the mapped items ID (for comparison) and the checked value */}
               <input type="checkbox" checked={item.completed} onClick={e => toggleTodo(item.id, e.target.checked)} />
               {item.title}
             </label>
-            <button className="btn-delete">Delete</button>
+            {/* delete button triggers delete todo function which parses in the id of mapped array for comparison to determine filter */}
+            <button className="btn-delete" onClick={() => deleteTodo(item.id)}>Delete</button>
           </li>
         })}
       </ul>
