@@ -1,39 +1,16 @@
 import "./style.css"
 import { useState } from "react"
+import { Form } from "./Form";
 
 function App() {
 
-  const [newItem, setNewItem] = useState("");
   const [toDos, setToDos] = useState([]);
 
   // 1 - type input function sets newItem state on change of typed keys
   // 2 - handle submit function returns array of todos and adds new item to array
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
-  // 4 - Create components for eact section
+  // 4 - Create components for each section
   // 4 - make data persistent
-
-  // typeInput functions sets netItem state using onchange event listener
-
-  function typeInput(e) {
-    setNewItem(e.target.value)
-  }
-
-
-  // handle submit function sets to do's using a nested function that has the parses current todos then returns these using spread operator and adds a new entry as an object / 
-  // this object contains an ID, title(actual input info) and completed Boolean
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setToDos(currentTodos => {
-
-      // Research why react objects needs ID//
-      return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }]
-    })
-
-    setNewItem("");
-
-  }
-
 
   // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
   // is assigned value of checkbox (true or false) --- the checked of the checkbox is then updated in real time as state changes
@@ -62,16 +39,10 @@ function App() {
   console.log(toDos)
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label className="form-label" htmlFor="item"> New Item </label>
-          <input value={newItem} onChange={typeInput} className="form-input" type="text" id="item" />
-          <button className="btn">Add</button>
-        </div>
-      </form>
-      <h1 className="header">To Do List</h1>
 
+    <>
+      <Form />
+      <h1 className="header">To Do List</h1>
       <ul>
         {/* Short ciruiting checks renders text if condition array is equal to 0 is met, if not text is not renderd */}
         {toDos.length === 0 && "Nothing To Do..."}
