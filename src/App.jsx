@@ -11,8 +11,6 @@ function App() {
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
   // 4 - make data persistent
 
-  // Test
-
   // typeInput functions sets netItem state using onchange event listener
 
   function typeInput(e) {
