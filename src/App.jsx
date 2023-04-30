@@ -9,7 +9,7 @@ function App() {
   // 1 - type input function sets newItem state on change of typed keys
   // 2 - handle submit function returns array of todos and adds new item to array
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
-  // 4 - Create components for each section
+  // 4 - Create components for each section - seperate to do section into components and ensure all code work
   // 4 - make data persistent
 
   // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
