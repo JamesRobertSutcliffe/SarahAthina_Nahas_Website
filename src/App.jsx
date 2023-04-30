@@ -1,6 +1,7 @@
 import "./style.css"
 import { useState } from "react"
 import { Form } from "./Form";
+import { List } from "./List";
 
 function App() {
 
@@ -27,9 +28,10 @@ function App() {
     })
   }
 
+
+  // add todo function created and passed to form element as destructed prop as  todo state is present in app
   function addTodo(title) {
     setToDos(currentTodos => {
-
       // Research why react objects needs ID//
       return [...currentTodos, { id: crypto.randomUUID(), title, completed: false }]
     })
@@ -51,23 +53,7 @@ function App() {
     <>
       <Form onSubmit={addTodo} />
       <h1 className="header">To Do List</h1>
-      <ul>
-        {/* Short ciruiting checks renders text if condition array is equal to 0 is met, if not text is not renderd */}
-        {toDos.length === 0 && "Nothing To Do..."}
-        {/* Map through todos array and returns a list entry with the new todo entries name (todo.name) from the added object */}
-
-        {toDos.map((item) => {
-          return <li key={item.id}>
-            <label>
-              {/* input triggers toggle todo function onclick -- parsing the mapped items ID (for comparison) and the checked value */}
-              <input type="checkbox" checked={item.completed} onClick={e => toggleTodo(item.id, e.target.checked)} />
-              {item.title}
-            </label>
-            {/* delete button triggers delete todo function which parses in the id of mapped array for comparison to determine filter */}
-            <button className="btn-delete" onClick={() => deleteTodo(item.id)}>Delete</button>
-          </li>
-        })}
-      </ul>
+      <List toDos={toDos} />
     </>
   )
 }
