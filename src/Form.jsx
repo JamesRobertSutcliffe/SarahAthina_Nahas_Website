@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./style.css"
 
-export function Form() {
+export function Form({ onSubmit }) {
 
     const [newItem, setNewItem] = useState("");
 
@@ -16,12 +16,9 @@ export function Form() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // setToDos(currentTodos => {
+        if (newItem === "") return;
 
-        //   // Research why react objects needs ID//
-        //   return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }]
-        // })
-
+        onSubmit(newItem)
         setNewItem("");
 
     }

@@ -27,6 +27,14 @@ function App() {
     })
   }
 
+  function addTodo(title) {
+    setToDos(currentTodos => {
+
+      // Research why react objects needs ID//
+      return [...currentTodos, { id: crypto.randomUUID(), title, completed: false }]
+    })
+  }
+
 
   // delete todo function maps through the current todos and filters out the results not equal to selected ID and then keep them within the todo array and rednered to page
   function deleteTodo(id) {
@@ -41,7 +49,7 @@ function App() {
   return (
 
     <>
-      <Form />
+      <Form onSubmit={addTodo} />
       <h1 className="header">To Do List</h1>
       <ul>
         {/* Short ciruiting checks renders text if condition array is equal to 0 is met, if not text is not renderd */}
