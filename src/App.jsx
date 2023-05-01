@@ -12,6 +12,7 @@ function App() {
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
   // 4 - Create components for each section - seperate to do section into components and ensure all code work
   // 4 - make data persistent
+  //hmmm
 
   // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
   // is assigned value of checkbox (true or false) --- the checked of the checkbox is then updated in real time as state changes
