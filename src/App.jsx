@@ -11,8 +11,7 @@ function App() {
   // 2 - handle submit function returns array of todos and adds new item to array
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
   // 4 - Create components for each section - seperate to do section into components and ensure all code work
-  // 4 - make data persistent
-  //hmmm
+
 
   // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
   // is assigned value of checkbox (true or false) --- the checked of the checkbox is then updated in real time as state changes
@@ -54,7 +53,7 @@ function App() {
     <>
       <Form onSubmit={addTodo} />
       <h1 className="header">To Do List</h1>
-      <List toDos={toDos} />
+      <List toDos={toDos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
   )
 }
