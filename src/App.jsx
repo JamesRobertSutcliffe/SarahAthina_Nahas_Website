@@ -1,16 +1,25 @@
 import "./style.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Form } from "./Form";
 import { List } from "./List";
 
 function App() {
 
-  const [toDos, setToDos] = useState([]);
+  const [toDos, setToDos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue === null) return []
+    return JSON.parse(localValue)
+  });
 
   // 1 - type input function sets newItem state on change of typed keys
   // 2 - handle submit function returns array of todos and adds new item to array
   // 3 - map (loop through) through to do's array parsing into a list component for each to do entry
   // 4 - Create components for each section - seperate to do section into components and ensure all code work
+
+
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(toDos))
+  }, [toDos])
 
 
   // toggle todo function maps through todo list and matches targets id to id in wthin todo list, when match is found state of that object.completed 
@@ -32,7 +41,6 @@ function App() {
   // add todo function created and passed to form element as destructed prop as  todo state is present in app
   function addTodo(title) {
     setToDos(currentTodos => {
-      // Research why react objects needs ID//
       return [...currentTodos, { id: crypto.randomUUID(), title, completed: false }]
     })
   }
