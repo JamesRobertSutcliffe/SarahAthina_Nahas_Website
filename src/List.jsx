@@ -1,4 +1,4 @@
-import { TodoItem } from "./todoItem"
+import { TodoItem } from "./TodoItem";
 
 export function List({ toDos, toggleTodo, deleteTodo }) {
     //Todos added and parsed as this is the state that is needed for this component to function (see MAP)
